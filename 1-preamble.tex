@@ -1,0 +1,132 @@
+% configure language packages
+%\usepackage[german,greek,english]{babel}
+\usepackage[utf8x]{inputenc} % why not [utf8]?
+\usepackage[T1]{fontenc}
+
+% configure math packages
+%\usepackage{amsmath}
+%\usepackage{amsfonts}
+%\usepackage{amssymb}
+
+% configure theme
+\usetheme{Warsaw}
+\usecolortheme{beaver}
+\beamertemplatenavigationsymbolsempty % remove 'toolbar' from slides
+%\setbeamertemplate{footline}[frame number] % footline with frame number only
+
+% make headline horizontal
+\setbeamertemplate{headline}{%
+  \leavevmode%
+  \hbox{%
+    \begin{beamercolorbox}[wd=\paperwidth,ht=2.5ex,dp=2ex]{section in head/foot}%
+    \insertsectionnavigationhorizontal{\paperwidth}{}{}
+    \end{beamercolorbox}%
+  }
+}
+
+% append frame number and total number of frames to current footline
+%\expandafter\def\expandafter\insertshorttitle\expandafter{%
+%  \insertshorttitle\hfill\insertframenumber/\inserttotalframenumber}
+
+% redefine footline to include a 'bottom line' text
+
+\newcommand{\bcbox}[2]{%
+  \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.5ex,dp=1ex]{#1 in head/foot}%
+    \usebeamerfont{#1 in head/foot}\hspace*{3mm}#2\hspace*{3mm}%
+  \end{beamercolorbox}%
+}
+
+\newcommand{\bottomlinetext}{}
+\newcommand{\bottomline}[1]{\renewcommand{\bottomlinetext}{#1}}
+
+\setbeamertemplate{footline}{%
+  \begin{normalsize}%
+  \begin{beamercolorbox}[ht=2.5ex,dp=1ex]{frame}%
+  \centering \begin{minipage}{0.85\textwidth} \bottomlinetext \end{minipage}%
+  \vspace{0mm}%
+  \end{beamercolorbox}%
+  \end{normalsize}%
+  \bottomline{}%
+  \leavevmode%
+  \bcbox{author}{\hfill\insertshortauthor}%
+  \bcbox{title}{\insertshorttitle\hfill\insertframenumber/\inserttotalframenumber}
+  \vskip0pt%
+}
+
+%\setbeamersize{sidebar width left=0.5cm,sidebar width right=0.5cm}{\usebeamercolor{sidebar}}\setbeamertemplate{sidebar canvas left}[horizontal shading][left=white,middle=sidebar.bg,right=white]\setbeamertemplate{sidebar canvas right}[horizontal shading][left=white,middle=sidebar.bg,right=white]
+
+%\setbeamertemplate{itemize items}[default]
+%\setbeamertemplate{enumerate items}[square]
+%\setbeamertemplate{items}[]
+%\useinnertheme{rectangles}
+
+% configure colors
+
+\definecolor{yellowgrey}{rgb}{1,1,0.98}
+\setbeamercolor{background canvas}{bg=yellowgrey}
+%\setbeamercolor{headlinecolor}{bg=black}
+%\setbeamercolor{block body}{bg=normal text.bg!90!black}
+%\setbeamercolor{block title}{fg=title.bg,bg=title.fg!80!black}
+%\setbeamercolor{block body example}{bg=yellowgrey!96!black}
+%\setbeamercolor{block title example}{fg=yellowgrey,bg=title.fg!70!black}
+\setbeamercolor{item projected}{fg=red!40!gray, bg=yellowgrey}
+
+\setbeamercolor{section in head/foot}{fg=red!40!gray,bg=gray!20!black}
+\setbeamercolor{subsection in head/foot}{fg=red!55!gray,bg=gray!30!black}
+
+% configure opaque blocks
+\addtobeamertemplate{block begin}{\pgfsetfillopacity{0.7}}{\pgfsetfillopacity{1}}
+\addtobeamertemplate{block alerted begin}{\pgfsetfillopacity{0.7}}{\pgfsetfillopacity{1}}
+\addtobeamertemplate{block example begin}{\pgfsetfillopacity{0.7}}{\pgfsetfillopacity{1}}
+
+% configure additional packages
+
+%\usepackage{graphicx}
+%\usepackage{tabularx}
+%\usepackage{multicol}
+%\usepackage{multirow}
+%\usepackage{wrapfig}
+%\usepackage{array}
+%\usepackage{qtree}
+%\usepackage{cancel}
+%\usepackage{caption}
+%\usepackage[normalem]{ulem}
+%\usepackage{haskell}
+%\usepackage{listings}
+%\usepackage{relsize}
+\usepackage{pbox}
+\usepackage{multimedia}
+\usepackage{tikz}
+%\usetikzlibrary{snakes}
+\usepackage{setspace}
+
+% configure syntax highlighting
+%\lstset{ %
+%  language=haskell,
+%  basicstyle=\color{white},
+%  backgroundcolor=\color{black},
+%  keywordstyle=\color{green},
+%  commentstyle=\color{lightgray},
+%  showspaces=false,
+%  showstringspaces=false,
+%}
+
+% redefine \emph command
+%\makeatletter
+%\DeclareRobustCommand{\em}{%
+%  \@nomath\em \if b\expandafter\@car\f@series\@nil
+%  \normalfont \else \bfseries \fi}
+%\makeatother
+%\DeclareTextFontCommand{\emph}{\ttfamily\bfseries}
+
+% define new commands
+\newcommand{\email}[1]{\href{mailto:#1}{\protect\nolinkurl{#1}}}
+\newcommand{\cbox}[2]{\pbox[t]{#1}{\relax\ifvmode\centering\fi #2}}
+\newcommand{\cmail}[2]{\hspace{2mm}\cbox{\textwidth}{#1 \\ \scriptsize \email{#2}}}
+
+\newcommand{\botline}[1]{\vspace{10mm} #1}
+
+\newcommand{\raisegraphics}[2]{\raisebox{-0.5\height}{\includegraphics[#1]{#2}}}
+
+% configure table of contents
+%\setcounter{tocdepth}{1}
