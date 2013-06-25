@@ -41,10 +41,12 @@
 
 \setbeamertemplate{footline}{%
   \begin{normalsize}%
-  \begin{beamercolorbox}[ht=2.5ex,dp=1ex]{frame}%
+  \pgfsetfillopacity{0.7}%
+  \begin{beamercolorbox}[ht=2.5ex,dp=1ex]{block body}%
   \centering \begin{minipage}{0.85\textwidth} \bottomlinetext \end{minipage}%
   \vspace{0mm}%
   \end{beamercolorbox}%
+  \pgfsetfillopacity{1}%
   \end{normalsize}%
   \bottomline{}%
   \leavevmode%
@@ -75,6 +77,7 @@
 \setbeamercolor{subsection in head/foot}{fg=red!55!gray,bg=gray!30!black}
 
 % configure opaque blocks
+\setbeamertemplate{blocks}[default]
 \addtobeamertemplate{block begin}{\pgfsetfillopacity{0.7}}{\pgfsetfillopacity{1}}
 \addtobeamertemplate{block alerted begin}{\pgfsetfillopacity{0.7}}{\pgfsetfillopacity{1}}
 \addtobeamertemplate{block example begin}{\pgfsetfillopacity{0.7}}{\pgfsetfillopacity{1}}
